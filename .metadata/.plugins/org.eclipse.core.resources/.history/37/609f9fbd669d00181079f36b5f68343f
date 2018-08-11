@@ -80,6 +80,7 @@ public class Bankcontroller extends HttpServlet {
 				
 				serviceLayer.addBankAccount(mmBankFactory.createNewCurrentAccount(account));
 				
+				session = request.getSession();
 				session.setAttribute("createdbankAccount", mmBankFactory.createNewCurrentAccount(account));
 			    response.sendRedirect("addNewSuccess.jsp");
 			}

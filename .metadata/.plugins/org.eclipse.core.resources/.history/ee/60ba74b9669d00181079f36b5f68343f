@@ -80,6 +80,7 @@ public class Bankcontroller extends HttpServlet {
 				
 				serviceLayer.addBankAccount(mmBankFactory.createNewCurrentAccount(account));
 				
+				session = request.getSession();
 				session.setAttribute("createdbankAccount", mmBankFactory.createNewCurrentAccount(account));
 			    response.sendRedirect("addNewSuccess.jsp");
 			}
@@ -110,7 +111,7 @@ public class Bankcontroller extends HttpServlet {
 			System.out.println(serviceLayer.getAccountByAccountNumber(accountToSearched2));
 			
 			System.out.println("*********************2");
-			
+		    HttpSession session = request.getSession();
 		    session.setAttribute("createdbankAccount", serviceLayer.getAccountByAccountNumber(accountToSearched2));
 		    
 		    System.out.println("*********************3");

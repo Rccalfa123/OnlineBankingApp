@@ -25,8 +25,7 @@ public class Bankcontroller extends HttpServlet {
 
 		Map<String, Object> account = new HashMap<String, Object>();
 		MMBankFactory mmBankFactory = new MMBankFactory();
-		HttpSession session = request.getSession();
-		
+
 		MoneyMoneyBankService serviceLayer = new MoneyMoneyBankService();
 
 		String name = request.getServletPath();
@@ -62,12 +61,10 @@ public class Bankcontroller extends HttpServlet {
 					account.put("salaried", false);
 					account.put("accountBalance", request.getParameter("savNbalance"));
 				}
-				System.out.println();
-				System.out.println("Map : " +account);
-				System.out.println();
 				System.out.println(mmBankFactory.createNewSavingsAccount(account));
 				serviceLayer.addBankAccount(mmBankFactory.createNewSavingsAccount(account));
-
+				
+			    HttpSession session = request.getSession();
 			    session.setAttribute("createdbankAccount", mmBankFactory.createNewSavingsAccount(account));
 			    response.sendRedirect("addNewSuccess.jsp");
 		
@@ -80,6 +77,7 @@ public class Bankcontroller extends HttpServlet {
 				
 				serviceLayer.addBankAccount(mmBankFactory.createNewCurrentAccount(account));
 				
+				HttpSession session = request.getSession();
 				session.setAttribute("createdbankAccount", mmBankFactory.createNewCurrentAccount(account));
 			    response.sendRedirect("addNewSuccess.jsp");
 			}
@@ -110,7 +108,7 @@ public class Bankcontroller extends HttpServlet {
 			System.out.println(serviceLayer.getAccountByAccountNumber(accountToSearched2));
 			
 			System.out.println("*********************2");
-			
+		    HttpSession session = request.getSession();
 		    session.setAttribute("createdbankAccount", serviceLayer.getAccountByAccountNumber(accountToSearched2));
 		    
 		    System.out.println("*********************3");
