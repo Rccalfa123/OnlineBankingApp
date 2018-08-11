@@ -1,0 +1,17 @@
+1533875214402	Delete element
+1533899815933	Rename resource 'search.jsp'
+1533901581139	Rename resource 'viewAllAccount.jsp'
+1533904981005	Rename resource 'UpdateCustomerForm.jsp'
+1533904990020	Rename resource 'WithdrawForm.jsp'
+1533907832384	Rename package 'com.cg.moneymoneybankapp.account.dao'
+1533907875617	Rename package 'com.cg.bank.controller'
+1533907901898	Rename package 'com.cg.moneymoneybankapp.account.pojo'
+1533907918120	Rename package 'com.cg.moneymoneybankapp.bootstrap'
+1533907953903	Delete element
+1533907973580	Rename package 'com.cg.moneymoneybankapp.factory'
+1533908113697	Delete element
+1533913704931	Rename resource 'addNewAccount.jsp'
+1533914913521	Rename resource 'addNewAccount1.jsp'
+1533965328462	Delete element
+1533967004616	Delete element
+1533973044717	Delete element

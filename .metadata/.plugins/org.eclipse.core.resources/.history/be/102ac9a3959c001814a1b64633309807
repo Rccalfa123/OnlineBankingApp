@@ -1,0 +1,97 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+    <%@taglib prefix="alfa" uri="http://java.sun.com/jsp/jstl/core"%>
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" type="text/css" href="mystyle.css">
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+	<form action="addNewAccount.app" method="get">
+		<h1 align="center">Update Customer Details</h1>
+		<br>
+
+		<table align="center" cellspacing="8">
+			
+			<tr>
+				<td>Last Name</td>
+				<td><input type="text" name="lname"></td>
+			</tr>
+			
+			
+			<tr>
+				<td>First Name</td>
+				<td><input type="text" name="fname"></td>
+			</tr>
+
+			<tr>
+				<td>Last Name</td>
+				<td><input type="text" name="lname"></td>
+			</tr>
+
+
+			<tr>
+				<td>Email</td>
+				<td><input type="email" name="email"></td>
+			</tr>
+
+			<tr>
+				<td>Date of Birth</td>
+				<td><input type="date" name="dob" onchange="checkDate(this);"></td>
+			</tr>
+			<tr>
+				<td>Contact No</td>
+				<td><input type="number" name="contact_no"  min="6000000000"  max="9999999999"></td>
+			</tr>
+
+			<tr>
+				<td>Address</td>
+				<td><textarea name="address" rows="4" cols="30"></textarea></td>
+			</tr>
+
+			<tr>
+				<td>Account Type</td>
+				<td><select name="accountType" onchange="checkAccountType(this);">
+						<option id="" value="">Select Account Type</option>
+						<option id="savingAccount" value="savingAccount">Saving Account</option>
+						<option id="currentAccount" value="currentAccount">Current Account</option>
+				</select></td>
+			</tr>
+
+			<tr id="salaried" class="toBeHidden">
+				<td>isSalaried</td>
+				<td><input type="radio" name="gender" value="salaried"   checked="checked" onchange="checkSalariedType(this);">Salaried 
+					<input type="radio" name="gender" value="notSalaried" checked="checked" onchange="checkSalariedType(this);">Notsalaried
+				</td>
+			</tr>
+			
+			<tr id="savSalBalance" class="toBeHidden">
+				<td>savSEnter Balance</td>
+				<td><input type="number" name="savSbalance" min="0"></td>
+			</tr>
+
+			<tr id="savNotSalBalance" class="toBeHidden">
+				<td>savNEnter Balance</td>
+				<td><input type="number" name="savNbalance" min="5000"></td>
+			<tr id="overDraft" class="toBeHidden">
+				<td>Over Draft Limit</td>
+				<td><input type="number" name="overDraft"></td>
+			</tr>
+
+			<tr id="curBalance" class="toBeHidden">
+				<td>curEnter Balance</td>
+				<td><input type="number" name="curbalance" min="10000"></td>
+			</tr>
+
+			<tr>
+				<td><input type="reset" value="Clear" onclick="resetAll();"></td>
+				<td><input type="submit" value="Submit"></td>
+			</tr>
+		</table>
+	</form>
+
+
+</body>
+</html>

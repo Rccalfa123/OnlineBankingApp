@@ -1,0 +1,21 @@
+package com.cg.alfabankapp.service;
+
+import com.cg.alfabankapp.account.dao.MoneyMoneyBankCollection;
+import com.cg.bank.framework.account.dao.BankAccountCollection;
+import com.cg.bank.framework.account.pojo.BankAccount;
+
+public class MoneyMoneyBankService {
+
+	MoneyMoneyBankCollection bankCollection = new MoneyMoneyBankCollection();
+	
+	public BankAccount addBankAccount(BankAccount bankAccount) {
+		bankCollection.addBankAccount(bankAccount);
+		return bankAccount;
+	}
+	
+	public void removeBankAccountByAccountNumber(int accountNumberToBeRemoved) {
+		
+		bankCollection.removeBankAccountByAccountNumber(accountNumberToBeRemoved);
+	}
+	
+}

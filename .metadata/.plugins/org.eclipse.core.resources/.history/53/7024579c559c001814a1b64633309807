@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style type="text/css">
+table{
+        border-color: black;
+        border: dotted;
+        
+       
+}
+</style>
+
+<meta charset="ISO-8859-1">
+<title>Resume</title>
+</head>
+<body>
+   <form action="MyServlet" method="get">
+   <h1 align="center"> RESUME </h1><br>
+   
+  <table align="center" cellspacing="8">
+   <tr><td>First Name </td><td><input type="text" name="fname"></td></tr>
+   
+   <tr><td>Last Name</td> <td> <input type="text" name="lname"></td></tr>
+   
+   <tr><td>Gender</td> <td><input type="radio" name = "gender" value="male" checked="checked">Male 
+   		  <input type="radio" name = "gender" value="female" checked="checked">Female
+   		  <input type="radio" name = "gender" value="others" checked="checked">Others</td></tr>	
+   
+   <tr><td>HighestQualification</td> <td><select name = "qualification">
+            <option value="matriculation">Matriculation</option>
+            <option value="intermediate">Intermediate</option>
+            <option value="bachaolor_degree">Bachaelor Degree</option>
+            <option value="masters">Masters</option>
+   			</select></td></tr>
+   
+   <tr><td>Date of Birth</td><td> <input type="date" name="dob"></td></tr>
+   
+   <tr><td>Hobbies</td> <td><select multiple  name = "hobbies">
+            <option value="singing">Singing</option>
+            <option value="dancing">Dancing</option>
+            <option value="reading">Reading</option>
+            <option value="sleeping">Sleeping</option>
+            <option value="eating">Eating</option>
+            <option value="video_games">Video Games</option> 
+   			</select></td></tr>
+   
+   <tr><td>Address</td><td> <textarea name="address"   rows="4" cols="30"></textarea></td></tr>
+   
+   <tr><td>Photo</td><td><input type="file"  name="photo" accept="image/*"></td></tr>
+   
+   
+   <tr><td>Skills </td>   <td><input type="checkbox" name="skills" value="c"> C 
+   			 <input type="checkbox" name="skills" value="c++"> C++ 
+   			 <input type="checkbox" name="skills" value="java"> Java 
+  			 <input type="checkbox" name="skills" value=".net"> .Net 
+  			 <input type="checkbox" name="skills" value="mysql"> MySql 
+   			 <input type="checkbox" name="skills" value="dbms"> DBMS 
+   			 <input type="checkbox" name="skills" value="python"> Python</td></tr>
+
+  <tr><td>Email</td> <td>   <input type="email"  name="email"> </td></tr>
+  
+  <tr><td>Website</td> <td> <input type="url" name="website"></td></tr>
+  
+  <tr><td>Contact No</td> <td><input type="text" name="contact_no"> </td></tr>
+  
+  <tr><td>Summary </td><td> <textarea name="summary"   rows="4" cols="30"></textarea></td></tr>
+   
+  <tr> <td><input type="reset" value="Clear"></td><td> <input type="submit" value="Submit"> </td></tr>
+  </table> 
+ </form>
+     
+
+</body>
+</html>

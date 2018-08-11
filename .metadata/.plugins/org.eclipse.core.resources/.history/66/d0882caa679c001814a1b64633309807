@@ -1,0 +1,48 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+	pageEncoding="ISO-8859-1"%>
+<%@taglib prefix="alfa" uri="http://java.sun.com/jsp/jstl/core"%>
+<!DOCTYPE html>
+<html>
+<head>
+
+<link rel="stylesheet" type="text/css" href="mystyle.css">
+
+<meta charset="ISO-8859-1">
+<title>Online Book Shop</title>
+</head>
+<body>
+     <jsp:include page="header.jsp"></jsp:include>
+	<form action=".app" method="get">
+	
+		<div>
+			<table cellspacing="15" align = "center" border="2" >
+				<tr>
+					<th colspan="4" height="35"><h2>Book List</h2></th>
+					<th><a href="Cart.jsp">Cart ( ${sessionScope.counter} )</a> </th>
+				</tr>
+			  <tr>
+					<th height="20">Book Id</th>
+					<th height="20">Book Name</th>
+					<th height="20">Book Description</th>
+					<th height="20">Book Price</th>
+					
+				</tr>
+			
+			<alfa:forEach var="books"  items="${sessionScope.availableBooks}">	
+			<tr>
+					<td align="center">${books.bookId}</td>
+					<td align="center">${books.bookName}</td>
+					<td align="center">${books.bookDescription}</td>
+					<td align="center">${books.bookPrice}</td>
+					<td align="center"  colspan="2"><a href="addnew.app?bookId=${books.bookId}">Add to Cart</a></td>
+			</tr>
+			</alfa:forEach>	
+			 <tr > <th colspan="6"> Total Price = ${sessionScope.price} </th></tr>
+					</table>
+		</div>
+	
+	</form>
+<jsp:include page="footer.html"></jsp:include>
+
+</body>
+</html>

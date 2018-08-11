@@ -1,0 +1,150 @@
+package com.cg.alfabankapp.controller;
+
+import java.io.IOException;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.util.HashMap;
+import java.util.Map;
+
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+import com.cg.alfabankapp.account.dao.MoneyMoneyBankCollection;
+import com.cg.alfabankapp.factory.MMBankFactory;
+
+
+@WebServlet("*.app")
+public class Bankcontroller extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		
+		Map<String, Object> account= new HashMap<String, Object>();
+		
+		MMBankFactory mmBankFactory = new MMBankFactory();
+
+		MoneyMoneyBankCollection bankCollection = new MoneyMoneyBankCollection();
+		
+		String name = request.getServletPath();
+		System.out.println(name);
+
+		switch (name) {
+		case "/addNewAccount.app":
+			System.out.println("*****************");
+			System.out.println(request.getParameter("customerName"));
+			
+			account.put("customerName", request.getParameter("customerName")) ;
+			
+			account.put("gender", request.getParameter("gender")) ;
+			
+			String dob = request.getParameter("dob");
+			DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+			LocalDate date = LocalDate.parse(dob, formatter);
+			account.put("dob", date);
+			
+			account.put("contact_no", Long.parseLong(request.getParameter("contact_no"))) ;
+			
+			account.put("houseNo", request.getParameter("houseNo")) ;
+			
+			account.put("street", request.getParameter("street")) ;
+			
+			account.put("city", request.getParameter("city")) ;
+			
+			account.put("state", request.getParameter("state")) ;
+			
+			account.put("pincode", Long.parseLong(request.getParameter("pincode"))) ;
+			
+			account.put("nationality", request.getParameter("nationality")) ;
+			
+			account.put("accountType", request.getParameter("accountType")) ;
+			
+			account.put("salary", Boolean.parseBoolean(request.getParameter("salaried"))) ;
+			
+			if(request.getParameter("overDraft") != null)
+			{
+				account.put("overDraft", request.getParameter("overDraft")) ;
+			}
+			if((request.getParameter("savSalBalance") ) != null)
+			{
+				account.put("savSalBalance",request.getParameter("savSalBalance"));
+			}
+			if((request.getParameter("savNotSalBalance") ) != null)
+			{
+				account.put("savNotSalBalance", Double.parseDouble(request.getParameter("savNotSalBalance"))) ;
+			}
+			
+			if((request.getParameter("curBalance") ) != null)
+			{
+				account.put("curBalance", Double.parseDouble(request.getParameter("curBalance"))) ;
+			}
+			account.put("email",request.getParameter("email"));
+			
+			System.out.println(mmBankFactory.createNewSavingsAccount(account));
+			
+			
+			
+			
+			//int counter = servicelayer.getCounter();
+			//System.out.println(counter);
+			//double price = servicelayer.getPrice();
+			//System.out.println(price);
+			//response.sendRedirect("showCart.app");
+			
+			break;
+
+		case "/removenew.app":
+//			servicelayer.removeBookFromCart(Integer.parseInt(request.getParameter("bookId")));
+//			counter = servicelayer.getCounter();
+//			System.out.println(counter);
+//			price = servicelayer.getPrice();
+//			System.out.println(price);
+//			HttpSession session = request.getSession();
+//			session.setAttribute("booksInCart", servicelayer.ViewCart());
+//			session.setAttribute("counter", servicelayer.getCounter());
+//			session.setAttribute("price", servicelayer.getPrice());
+//			response.sendRedirect("Cart.jsp");
+			
+			break;
+	
+			
+		case "/showCart.app":
+
+//		    session = request.getSession();
+//			session.setAttribute("booksInCart", servicelayer.ViewCart());
+//			session.setAttribute("counter", servicelayer.getCounter());
+//			session.setAttribute("price", servicelayer.getPrice());
+//			response.sendRedirect("index.jsp");
+//
+//			break;
+//
+		case "/showBook.app":
+
+//			session = request.getSession();
+//			session.setAttribute("availableBooks", servicelayer.ViewBook());
+//			response.sendRedirect("home.jsp");
+//
+	   case "/dropdownchange.app":
+		     
+		   String AccountType = request.getParameter("accountType");
+		   System.out.println(AccountType);
+		   HttpSession session = request.getSession();
+		   session.setAttribute("accountType", AccountType);
+			break;
+
+		default:
+			break;
+		}
+
+	}
+
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		doGet(request, response);
+	}
+
+}
