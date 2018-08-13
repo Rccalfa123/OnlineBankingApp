@@ -28,7 +28,7 @@
 					</tr>
 					<tr>
 						<th height="20">Amount : </th>
-						<th colspan="5" > <input type="number" name="typedAmount"  placeholder="Enter Amount" required="required"></th>
+						<th colspan="5" > <input type="number" name="typedAmount"  placeholder="Enter Amount" required="required" min="1"></th>
 					</tr>
  					<tr>
 						<th colspan="6"  height="40"><input type="submit" value="Deposit"></th>

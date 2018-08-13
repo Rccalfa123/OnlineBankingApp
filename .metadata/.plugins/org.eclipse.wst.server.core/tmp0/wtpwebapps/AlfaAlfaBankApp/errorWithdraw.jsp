@@ -20,7 +20,7 @@
 			<div>
 				<table cellspacing="15" align="center" border="2">
 					<tr>
-						<th colspan="6" height="35"><h2>OOps!!!! Account Number ${sessionScope.accountInWithdraw} is Not Available </h2></th>
+						<th colspan="6" height="35"><h2>OOps!!!! Account Number ${sessionScope.accountInWithdraw} is Not Available or Withdraw Amount is not Valid</h2></th>
 					</tr>
  					<tr>
 						<th colspan="6"  height="40"><input type="submit" value="OK"></th>

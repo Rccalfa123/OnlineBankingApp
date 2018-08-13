@@ -24,11 +24,11 @@ public class MMBankCurrentAccount extends CurrentAccount implements Comparable<B
 	}
 	
 	public double withdraw(double amountToBeWithDrawn) {
-		if(this.getAccountBalance()+this.getOdLimit()>amountToBeWithDrawn) {
+		if(this.getAccountBalance()+this.getOdLimit()>=amountToBeWithDrawn) {
 			this.setAccountBalance(this.getAccountBalance()-amountToBeWithDrawn);
 			return amountToBeWithDrawn;
 		}else {
-			return 0;
+			return -1;
 		}
 	}
 }

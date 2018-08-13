@@ -1,6 +1,7 @@
 package com.cg.alfabankapp.service;
 
 import java.util.Collection;
+import java.util.Map;
 
 import com.cg.alfabankapp.account.dao.MoneyMoneyBankCollection;
 import com.cg.bank.framework.account.pojo.BankAccount;
@@ -47,4 +48,9 @@ public class MoneyMoneyBankService {
 		
 		return bankCollection.performFundTransfer(receipientAccountNumber, donerAccountNumber, amountToBeTransffered);
 	}
+   
+   
+   public void updateAccount(Map<String, Object> upMapint ) {
+    bankCollection.updateAccount(upMapint);
+   }
 }

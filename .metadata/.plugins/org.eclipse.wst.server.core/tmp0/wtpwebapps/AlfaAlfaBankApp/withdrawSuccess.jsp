@@ -25,6 +25,10 @@
 							${sessionScope.accountInWithdraw}</h2></th>
 				</tr>
  
+             <tr>
+					<th colspan="7" height="40"><h3>Denominations</h3></th>
+				</tr>
+   
                 <alfa:forEach var="notes" items="${sessionScope.denomination.keySet()}">
 						<tr align="center"><td>${notes} : ${sessionScope.denomination.get(notes)}</td></tr>
 				</alfa:forEach>

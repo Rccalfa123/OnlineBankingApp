@@ -47,10 +47,6 @@
 							<td align="center">${sessionScope.createdbankAccount.salary}</td>
 						</alfa:otherwise>
 					</alfa:choose>
-					<td align="center" colspan="2"><a
-						href="removenew.app?bookId=${booksInCart.bookObject.bookId}">
-							Update </a></td>
-				</tr>
             		<tr>
 						<th colspan="9"  height="40"><input type="submit" value="Home"></th>
 					</tr>

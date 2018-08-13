@@ -1,0 +1,25 @@
+@charset "ISO-8859-1";
+
+body {
+    background-color: blue;
+}
+
+h1 {
+    color: navy;
+}
+
+td{
+	
+ font-family: sans-serif;
+	
+}
+
+table {
+	border-color: Black;
+	border-right: 2px 2px 2px 2px ;
+	
+}
+
+a{
+	text-decoration: none;
+}

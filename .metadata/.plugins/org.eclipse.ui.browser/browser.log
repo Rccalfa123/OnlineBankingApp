@@ -113,3 +113,18 @@ Aug 13, 2018 16:09:22.05 [6524:7668:0813/160921.962:ERROR:in_progress_cache_impl
 Aug 13, 2018 16:09:22.05 [6524:7668:0813/160921.962:ERROR:in_progress_cache_impl.cc(191)] Cache is not initialized, cannot RetrieveEntry.
 Aug 13, 2018 16:09:25.96 [6524:7668:0813/160925.960:ERROR:gpu_process_transport_factory.cc(1016)] Lost UI shared context.
 Aug 13, 2018 16:10:06.40 Unable to read VR Path Registry from P:\Users\aullah\AppData\Local\openvr\openvrpaths.vrpath
+
+Aug 13, 2018 21:01:46.90 NEW SESSION
+Aug 13, 2018 21:01:46.90 [6668:6820:0813/210146.892:ERROR:in_progress_cache_impl.cc(191)] Cache is not initialized, cannot RetrieveEntry.
+Aug 13, 2018 21:01:46.93 [6668:6820:0813/210146.893:ERROR:in_progress_cache_impl.cc(191)] Cache is not initialized, cannot RetrieveEntry.
+Aug 13, 2018 21:01:46.93 [6668:6820:0813/210146.893:ERROR:in_progress_cache_impl.cc(191)] Cache is not initialized, cannot RetrieveEntry.
+Aug 13, 2018 21:01:46.93 [6668:6820:0813/210146.893:ERROR:in_progress_cache_impl.cc(191)] Cache is not initialized, cannot RetrieveEntry.
+Aug 13, 2018 21:01:46.93 [6668:6820:0813/210146.893:ERROR:in_progress_cache_impl.cc(191)] Cache is not initialized, cannot RetrieveEntry.
+Aug 13, 2018 21:01:46.93 [6668:6820:0813/210146.893:ERROR:in_progress_cache_impl.cc(191)] Cache is not initialized, cannot RetrieveEntry.
+Aug 13, 2018 21:01:46.94 [6668:6820:0813/210146.893:ERROR:in_progress_cache_impl.cc(191)] Cache is not initialized, cannot RetrieveEntry.
+Aug 13, 2018 21:01:46.94 [6668:6820:0813/210146.893:ERROR:in_progress_cache_impl.cc(191)] Cache is not initialized, cannot RetrieveEntry.
+Aug 13, 2018 21:01:46.94 [6668:6820:0813/210146.893:ERROR:in_progress_cache_impl.cc(191)] Cache is not initialized, cannot RetrieveEntry.
+Aug 13, 2018 21:01:46.94 [6668:6820:0813/210146.893:ERROR:in_progress_cache_impl.cc(191)] Cache is not initialized, cannot RetrieveEntry.
+Aug 13, 2018 21:01:46.94 [6668:6820:0813/210146.893:ERROR:in_progress_cache_impl.cc(191)] Cache is not initialized, cannot RetrieveEntry.
+Aug 13, 2018 21:01:52.66 [6668:6820:0813/210152.666:ERROR:gpu_process_transport_factory.cc(1016)] Lost UI shared context.
+Aug 13, 2018 21:02:31.70 Unable to read VR Path Registry from P:\Users\aullah\AppData\Local\openvr\openvrpaths.vrpath

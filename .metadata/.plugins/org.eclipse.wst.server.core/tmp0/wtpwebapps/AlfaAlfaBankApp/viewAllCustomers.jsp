@@ -42,7 +42,7 @@
 							<td align="center">${BankAccounts.accountHolder.contactNumber}</td>
 							<td align="center">${BankAccounts.accountHolder.dateOfBirth}</td>
 							<td align="center" colspan="2"><a
-								href="removenew.app?bookId=${booksInCart.bookObject.bookId}"> Update </a></td>
+								href="updateForm.app?accountNumber=${BankAccounts.accountNumber}"> Update </a></td>
 						</tr>
 					</alfa:forEach>
 					

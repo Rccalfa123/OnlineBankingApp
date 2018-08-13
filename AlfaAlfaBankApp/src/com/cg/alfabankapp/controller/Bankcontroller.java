@@ -15,6 +15,7 @@ import javax.servlet.http.HttpSession;
 
 import com.cg.alfabankapp.factory.MMBankFactory;
 import com.cg.alfabankapp.service.MoneyMoneyBankService;
+import com.cg.bank.framework.account.pojo.BankAccount;
 
 @WebServlet("*.app")
 public class Bankcontroller extends HttpServlet {
@@ -135,8 +136,14 @@ public class Bankcontroller extends HttpServlet {
 			Amount2 = Integer.parseInt(Amount);
 			session.setAttribute("amountInWithdraw", Amount2);
 
-			check = serviceLayer.depositAmount(accountNumber2, Amount2);
-			if (check == 0.0) {
+			check = serviceLayer.withdrawAmount(accountNumber2, Amount2);
+			
+			BankAccount bankAccount = serviceLayer.getAccountByAccountNumber(accountNumber2);
+			
+			System.out.println(bankAccount.getAccountBalance());
+			System.out.println("Check : " + check);
+			
+			if (check == -1) {
 				response.sendRedirect("errorWithdraw.jsp");
 			} else {
 				Map<Integer, Integer> denomination = new HashMap<Integer, Integer>();
@@ -177,10 +184,38 @@ public class Bankcontroller extends HttpServlet {
 			}
 
 			break;
+			
+		case "/updateForm.app":
+			
+			accountNumber = request.getParameter("accountNumber");
+			accountNumber2 = Integer.parseInt(accountNumber);
+			session.setAttribute("bankAccount",serviceLayer.getAccountByAccountNumber(accountNumber2));
+			response.sendRedirect("updateForm.jsp");
+			
+			break;
+			
+		case "/updated.app":
+			   Map<String, Object> upMap = new HashMap<String, Object>();
+			   
+			   upMap.put("customerName",request.getParameter("customerName"));
+			   upMap.put("emailId",request.getParameter("emailId"));
+			   upMap.put("contact_no",request.getParameter("contact_no"));
+			   
+			    dob = request.getParameter("dob");
+				formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+				date = LocalDate.parse(dob, formatter);
+			   
+			   upMap.put("dob",date);
+			   upMap.put("accountNumber",request.getParameter("accountNumber"));
+			   
+			   serviceLayer.updateAccount(upMap);  
+			   response.sendRedirect("viewAllAccount.app");
+			   
+			   break;
 		}
 
 	}
-
+	
 	private Map<Integer, Integer> giveDenominations(double check) {
 		Map<Integer, Integer> denomination = new HashMap<Integer, Integer>();
 

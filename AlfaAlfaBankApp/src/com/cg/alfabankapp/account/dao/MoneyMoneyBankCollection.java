@@ -2,9 +2,11 @@
 //It also defines various methods specific to the Money money bank.
 package com.cg.alfabankapp.account.dao;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
+import java.util.Map;
 
 import com.cg.bank.framework.account.dao.BankAccountCollection;
 import com.cg.bank.framework.account.pojo.BankAccount;
@@ -46,30 +48,30 @@ public class MoneyMoneyBankCollection extends BankAccountCollection {
 
 	// It uses the withdraw() method of the BankAccount and performs the withdrawal
 	// action on a given account.
-	public Double withdrawAmount(int accountToDeductedFrom, double amount) {
+	public double withdrawAmount(int accountToDeductedFrom, double amount) {
 		for (BankAccount b : viewAll()) {
 
 			if ((b.getAccountNumber() == accountToDeductedFrom)) {
-				b.withdraw(amount);
+				if(b.withdraw(amount) != -1)
 				return amount;
 			}
 		}
-		return 0.0;	
+		return -1;	
 	}
 
 	// It uses the deposit() method of the BankAccount and performs the deposit
 	// action on a given account.
-	public Double depositAmount(int accountToBeDepositedIn, double amount) {
+	public double depositAmount(int accountToBeDepositedIn, double amount) {
 		for (BankAccount b : viewAll()) {
 			if ((b.getAccountNumber() == accountToBeDepositedIn)) {
 				b.deposit(amount);
 				return amount;
 			}
 		}
-		return 0.0;
+		return -1;
 	}
 
-	public Double performFundTransfer(int receipientAccountNumber, int donerAccountNumber, double amountToBeTransffered) {
+	public double performFundTransfer(int receipientAccountNumber, int donerAccountNumber, double amountToBeTransffered) {
 		
 		for(BankAccount receiver : viewAll() ) {
 			if(receiver.getAccountNumber() == receipientAccountNumber) {
@@ -81,7 +83,7 @@ public class MoneyMoneyBankCollection extends BankAccountCollection {
 				}
 			}
 		}
-		return 0.0;
+		return -1;
 	}
 
 	public List<BankAccount> getBankAccounts() {
@@ -93,4 +95,16 @@ public class MoneyMoneyBankCollection extends BankAccountCollection {
 		return listOfAccounts;
 	}
 
+	public void updateAccount(Map<String, Object> upMapint) 
+	{System.out.println(upMapint.values());
+		for (BankAccount b : viewAll()) {
+			if ((b.getAccountNumber() == Integer.parseInt(upMapint.get("accountNumber").toString()))) {
+				 b.getAccountHolder().setCustomerName(upMapint.get("customerName").toString());
+				 b.getAccountHolder().setEmailId(upMapint.get("emailId").toString());
+				 b.getAccountHolder().setContactNumber(Long.parseLong(upMapint.get("contact_no").toString()));
+				 b.getAccountHolder().setDateOfBirth((LocalDate)upMapint.get("dob"));
+	        }
+
+    }
 }
+}	
