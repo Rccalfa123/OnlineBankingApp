@@ -26,7 +26,7 @@ public class Bankcontroller extends HttpServlet {
 		Map<String, Object> account = new HashMap<String, Object>();
 		MMBankFactory mmBankFactory = new MMBankFactory();
 		HttpSession session = request.getSession();
-		
+
 		MoneyMoneyBankService serviceLayer = new MoneyMoneyBankService();
 
 		String name = request.getServletPath();
@@ -63,79 +63,156 @@ public class Bankcontroller extends HttpServlet {
 					account.put("accountBalance", request.getParameter("savNbalance"));
 				}
 				System.out.println();
-				System.out.println("Map : " +account);
+				System.out.println("Map : " + account);
 				System.out.println();
-				System.out.println(mmBankFactory.createNewSavingsAccount(account));
-				serviceLayer.addBankAccount(mmBankFactory.createNewSavingsAccount(account));
 
-			    session.setAttribute("createdbankAccount", mmBankFactory.createNewSavingsAccount(account));
-			    response.sendRedirect("addNewSuccess.jsp");
-		
+				session.setAttribute("createdbankAccount",
+						serviceLayer.addBankAccount(mmBankFactory.createNewSavingsAccount(account)));
+
 			} else {
 				account.put("odLimit", request.getParameter("overDraft"));
-				
+
 				account.put("accountBalance", request.getParameter("curbalance"));
-				
-				System.out.println(mmBankFactory.createNewCurrentAccount(account));
-				
-				serviceLayer.addBankAccount(mmBankFactory.createNewCurrentAccount(account));
-				
-				session.setAttribute("createdbankAccount", mmBankFactory.createNewCurrentAccount(account));
-			    response.sendRedirect("addNewSuccess.jsp");
+
+				session.setAttribute("createdbankAccount",
+						serviceLayer.addBankAccount(mmBankFactory.createNewCurrentAccount(account)));
+
 			}
-		
+
+			response.sendRedirect("addNewSuccess.jsp");
 			break;
 
-		case "/removenew.app":
-//			servicelayer.removeBookFromCart(Integer.parseInt(request.getParameter("bookId")));
-//			counter = servicelayer.getCounter();
-//			System.out.println(counter);
-//			price = servicelayer.getPrice();
-//			System.out.println(price);
-//			HttpSession session = request.getSession();
-//			session.setAttribute("booksInCart", servicelayer.ViewCart());
-//			session.setAttribute("counter", servicelayer.getCounter());
-//			session.setAttribute("price", servicelayer.getPrice());
-//			response.sendRedirect("Cart.jsp");
-
+		case "/viewAllAccount.app":
+			System.out.println("All Accounts : " + serviceLayer.getBankAccounts());
+			session.setAttribute("BankAccounts", serviceLayer.getBankAccounts());
+			response.sendRedirect("viewAllCustomers.jsp");
 			break;
 
 		case "/viewAccount.app":
 
 			System.out.println("*********************1");
-			
+
 			String accountToSearched = request.getParameter("typedAccount");
 			int accountToSearched2 = Integer.parseInt(accountToSearched);
-			System.out.println("Account number : "+ accountToSearched2);
+			System.out.println("Account number : " + accountToSearched2);
 			System.out.println(serviceLayer.getAccountByAccountNumber(accountToSearched2));
-			
+
 			System.out.println("*********************2");
-			
-		    session.setAttribute("createdbankAccount", serviceLayer.getAccountByAccountNumber(accountToSearched2));
-		    
-		    System.out.println("*********************3");
+
+			session.setAttribute("createdbankAccount", serviceLayer.getAccountByAccountNumber(accountToSearched2));
+
+			System.out.println("*********************3");
 			response.sendRedirect("viewAccount.jsp");
 
 			break;
-			
-//		case "/showBook.app":
 
-//			session = request.getSession();
-//			session.setAttribute("availableBooks", servicelayer.ViewBook());
-//			response.sendRedirect("home.jsp");
-//
-//		case "/dropdownchange.app":
-//
-//			String AccountType = request.getParameter("accountType");
-//			System.out.println(AccountType);
-//			session = request.getSession();
-//			session.setAttribute("accountType", AccountType);
-//			break;
+		case "/depositForm.app":
 
-		default:
+			String accountNumber = request.getParameter("typedAccount");
+			int accountNumber2 = Integer.parseInt(accountNumber);
+			session.setAttribute("accountInDeposit", accountNumber2);
+
+			String Amount = request.getParameter("typedAmount");
+			double Amount2 = Integer.parseInt(Amount);
+
+			session.setAttribute("amountInDeposit", Amount2);
+
+			double check = serviceLayer.depositAmount(accountNumber2, Amount2);
+			if (check == 0.0) {
+				response.sendRedirect("errorDeposit.jsp");
+			} else {
+				response.sendRedirect("depositSuccess.jsp");
+			}
+			break;
+
+		case "/withdraw.app":
+
+			accountNumber = request.getParameter("typedAccount");
+			accountNumber2 = Integer.parseInt(accountNumber);
+			session.setAttribute("accountInWithdraw", accountNumber2);
+
+			Amount = request.getParameter("typedAmount");
+			Amount2 = Integer.parseInt(Amount);
+			session.setAttribute("amountInWithdraw", Amount2);
+
+			check = serviceLayer.depositAmount(accountNumber2, Amount2);
+			if (check == 0.0) {
+				response.sendRedirect("errorWithdraw.jsp");
+			} else {
+				Map<Integer, Integer> denomination = new HashMap<Integer, Integer>();
+				denomination = giveDenominations(check);
+				
+				System.out.println("deno : "+denomination.values());
+				
+				System.out.println("\n");
+				session.setAttribute("denomination", denomination);
+				response.sendRedirect("withdrawSuccess.jsp");
+			}
+
+			break;
+
+		case "/fundTransfer.app":
+
+			String typedFromAccount = request.getParameter("typedFromAccount");
+			int typedFromAccount2 = Integer.parseInt(typedFromAccount);
+
+			session.setAttribute("accountInWithdrawTransfer", typedFromAccount2);
+
+			String typedToAccount = request.getParameter("typedToAccount");
+			int typedToAccount2 = Integer.parseInt(typedToAccount);
+
+			session.setAttribute("accountInDepositTransfer", typedToAccount2);
+
+			Amount = request.getParameter("typedAmount");
+			Amount2 = Integer.parseInt(Amount);
+
+			session.setAttribute("amountInTransfer", Amount2);
+
+			// String typedremarks = request.getParameter("typedremarks");
+			check = serviceLayer.performFundTransfer(typedToAccount2, typedFromAccount2, Amount2);
+			if (check == 0.0) {
+				response.sendRedirect("errorfundTransfer.jsp");
+			} else {
+				response.sendRedirect("fundTransferSuccess.jsp");
+			}
+
 			break;
 		}
 
+	}
+
+	private Map<Integer, Integer> giveDenominations(double check) {
+		Map<Integer, Integer> denomination = new HashMap<Integer, Integer>();
+
+		if (check >= 2000) {
+			denomination.put(2000, (int) check / 2000);
+			check %= 2000;
+		}
+		if (check >= 500) {
+			denomination.put(500, (int) check / 500);
+			check %= 500;
+		}
+		if (check >= 200) {
+			denomination.put(200, (int) check / 200);
+			check %= 200;
+		}
+		if (check >= 100) {
+			denomination.put(100, (int) check / 100);
+			check %= 100;
+		}
+		if (check >= 50) {
+			denomination.put(50, (int) check / 50);
+			check %= 50;
+		}
+		if (check >= 10) {
+			denomination.put(10, (int) check / 10);
+			check %= 10;
+		}
+		if (check >= 1) {
+			denomination.put(1, (int) check / 1);
+			check %= 1;
+		}
+		return denomination;
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)

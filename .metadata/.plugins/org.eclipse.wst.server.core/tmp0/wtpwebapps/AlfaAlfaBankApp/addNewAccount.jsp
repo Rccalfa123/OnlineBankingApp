@@ -82,7 +82,7 @@
 		<table align="center" cellspacing="8" border="2">
 			<tr>
 				<td align="center">Customer Name</td>
-				<td><input type="text" name="customerName"></td>
+				<td><input type="text" name="customerName" required="required"></td>
 			</tr>
 
 			<tr>
@@ -94,34 +94,34 @@
 			</tr>
 			<tr>
 				<td align="center">Date of Birth</td>
-				<td><input type="date" name="dob" onchange="checkDate(this);"></td>
+				<td><input type="date" name="dob" onchange="checkDate(this);"  required="required"></td>
 			</tr>
 			<tr>
 				<td align="center">Email</td>
-				<td><input type="email" name="email" placeholder="Email"></td>
+				<td><input type="email" name="email" placeholder="Email"  required="required"></td>
 			</tr>
 			<tr>
 				<td align="center">Contact No</td>
-				<td><input type="number" name="contact_no"  min="6000000000"  max="9999999999"></td>
+				<td><input type="number" name="contact_no"  min="6000000000"  max="9999999999"  required="required"></td>
 			</tr>
 
 			<tr>
 				<td align="center" height="30">Address</td>
-				<td ><input type="text" name="houseNo" placeholder="House Number"></td>
-				<td align="center"><input type="text" name="street" placeholder="street"></td>
-				<td align="center"><input type="text" name="city" placeholder="city"></td>
-				<td align="center"><input type="text" name="state" placeholder="state"></td>
-				<td align="center"><input type="number" name="pincode" placeholder="pincode"></td>
+				<td ><input type="text" name="houseNo" placeholder="House Number" required="required"></td>
+				<td align="center"><input type="text" name="street" placeholder="street"  required="required"></td>
+				<td align="center"><input type="text" name="city" placeholder="city" required="required"></td>
+				<td align="center"><input type="text" name="state" placeholder="state" required="required"></td>
+				<td align="center"><input type="number" name="pincode" placeholder="pincode" required="required"></td>
 			</tr>
 
 			<tr>
 				<td align="center">Nationality</td>
-				<td><input type="text" name="nationality" placeholder="Nationality"></td>
+				<td><input type="text" name="nationality" placeholder="Nationality" required="required"></td>
 			</tr>
 
 			<tr>
 				<td align="center">Account Type</td>
-				<td><select name="accountType" onchange="checkAccountType(this);">
+				<td><select name="accountType" onchange="checkAccountType(this);" required="required">
 						<option id="" value="">Select Account Type</option>
 						<option id="savingAccount" value="savingAccount">Saving Account</option>
 						<option id="currentAccount" value="currentAccount">Current Account</option>

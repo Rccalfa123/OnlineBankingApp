@@ -13,7 +13,7 @@
 
 <jsp:include page="header.jsp"></jsp:include>
 
-		<form action=".app" method="get">
+		<form action="home.jsp" method="get">
 
 			<div>
 				<table cellspacing="15" align="center" border="2">
@@ -24,14 +24,23 @@
 					</tr>
 					<tr>
 						<th height="20">Account Number</th>
+						<th height="20">Customer Name</th>
+						<th height="20">Customer ID</th>
 						<th height="20">Account Type </th>
 						<th height="20">Account Balance</th>
 					</tr>
 						<tr height="40">
 							<td align="center">${sessionScope.createdbankAccount.accountNumber}</td>
+							<td align="center">${sessionScope.createdbankAccount.accountHolder.customerName}</td>
+							<td align="center">${sessionScope.createdbankAccount.accountHolder.customerId}</td>
 							<td align="center">${sessionScope.createdbankAccount.accountType}</td>
 							<td align="center">${sessionScope.createdbankAccount.accountBalance}</td>
 						</tr>
+
+						<tr>
+						<th colspan="6"  height="40"><input type="submit" value="Home"></th>
+					</tr>	
+						
 				</table>
 			</div>
 

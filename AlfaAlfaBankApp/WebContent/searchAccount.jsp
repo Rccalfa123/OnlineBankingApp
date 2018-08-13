@@ -20,7 +20,7 @@
 				</tr>
 				
 				<tr>
-					<th colspan="6" > <input type="number" name="typedAccount"  placeholder="Enter Account Number"></th>
+					<th colspan="6" > <input type="number" name="typedAccount"  placeholder="Enter Account Number" required="required"></th>
 				</tr>
 				
 				<tr>

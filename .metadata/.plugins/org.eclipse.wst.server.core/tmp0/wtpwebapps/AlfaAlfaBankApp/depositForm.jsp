@@ -15,7 +15,7 @@
 
 <jsp:include page="header.jsp"></jsp:include>
 
-		<form action=".app" method="get">
+		<form action="depositForm.app" method="get">
 
 			<div>
 				<table cellspacing="15" align="center" border="2">
@@ -24,14 +24,14 @@
 					</tr>
 					<tr>
 						<th height="20">Account Number : </th>
-						<th colspan="5" > <input type="number" name="typedAccount"  placeholder="Enter Account Number"></th>
+						<th colspan="5" > <input type="number" name="typedAccount"  placeholder="Enter Account Number" required="required"></th>
 					</tr>
 					<tr>
 						<th height="20">Amount : </th>
-						<th colspan="5" > <input type="number" name="typedAmount"  placeholder="Enter Amount"></th>
+						<th colspan="5" > <input type="number" name="typedAmount"  placeholder="Enter Amount" required="required"></th>
 					</tr>
  					<tr>
-						<th colspan="6"  height="40"><a href = "withdraw.app">Deposit</a></th>
+						<th colspan="6"  height="40"><input type="submit" value="Deposit"></th>
 					</tr>
 				</table>
 			</div>

@@ -1,11 +1,8 @@
 package com.cg.alfabankapp.service;
 
-import java.util.ArrayList;
 import java.util.Collection;
-import java.util.List;
 
 import com.cg.alfabankapp.account.dao.MoneyMoneyBankCollection;
-import com.cg.bank.framework.account.dao.BankAccountCollection;
 import com.cg.bank.framework.account.pojo.BankAccount;
 import com.cg.bank.framework.account.pojo.Customer;
 
@@ -14,7 +11,7 @@ public class MoneyMoneyBankService {
 	MoneyMoneyBankCollection bankCollection = new MoneyMoneyBankCollection();
 	
 	public BankAccount addBankAccount(BankAccount bankAccount) {
-		bankCollection.addBankAccount(bankAccount);
+		System.out.println("bankAccount return : "+		bankCollection.addBankAccount(bankAccount));
 		return bankAccount;
 	}
 	
@@ -31,16 +28,23 @@ public class MoneyMoneyBankService {
 		return bankCollection.getCustomers();
 	}
 	
-	public void withdrawAmount(int accountToDeductedFrom, double amount) {
-		bankCollection.withdrawAmount(accountToDeductedFrom, amount);
+	public Collection<BankAccount> getBankAccounts() {
+		return bankCollection.getBankAccounts();
 	}
 	
-	public void depositAmount(int accountToBeDepositedIn, double amount) {
-		bankCollection.depositAmount(accountToBeDepositedIn, amount);
+	
+	public Double withdrawAmount(int accountToDeductedFrom, double amount) {
+	 return	bankCollection.withdrawAmount(accountToDeductedFrom, amount);
+	
+	}
+	
+	public Double depositAmount(int accountToBeDepositedIn, double amount) {
+		return bankCollection.depositAmount(accountToBeDepositedIn, amount);
+		
 	}
 
-   public void performFundTransfer(int receipientAccountNumber, int donerAccountNumber, double amountToBeTransffered) {
+   public Double performFundTransfer(int receipientAccountNumber, int donerAccountNumber, double amountToBeTransffered) {
 		
-		bankCollection.performFundTransfer(receipientAccountNumber, donerAccountNumber, amountToBeTransffered);
+		return bankCollection.performFundTransfer(receipientAccountNumber, donerAccountNumber, amountToBeTransffered);
 	}
 }

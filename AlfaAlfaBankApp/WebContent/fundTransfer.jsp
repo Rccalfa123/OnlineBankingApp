@@ -15,7 +15,7 @@
 
 <jsp:include page="header.jsp"></jsp:include>
 
-		<form action=".app" method="get">
+		<form action="fundTransfer.app" method="get">
 
 			<div>
 				<table cellspacing="15" align="center" border="2">
@@ -24,22 +24,22 @@
 					</tr>
 					<tr>
 						<th height="20">From Account Number : </th>
-						<th colspan="5" > <input type="number" name="typedFromAccount"  placeholder=" From Account Number "></th>
+						<th colspan="5" > <input type="number" name="typedFromAccount"  placeholder=" From Account Number " required="required"></th>
 					</tr>
 					<tr>
 						<th height="20">To Account Number : </th>
-						<th colspan="5" > <input type="number" name="typedToAccount"  placeholder=" To Account Number "></th>
+						<th colspan="5" > <input type="number" name="typedToAccount"  placeholder=" To Account Number " required="required"></th>
 					</tr>
 					<tr>
 						<th height="20">Amount : </th>
-						<th colspan="5" > <input type="number" name="typedAmount"  placeholder="Enter Amount"></th>
+						<th colspan="5" > <input type="number" name="typedAmount"  placeholder="Enter Amount" required="required"></th>
 					</tr>
 					<tr>
 						<th height="20">Remarks : </th>
 						<th colspan="5" > <input type="text" name="typedremarks"  placeholder=" Remarks "></th>
 					</tr>
  					<tr>
-						<th colspan="6"  height="40"><a href = "withdraw.app">Transfer</a></th>
+						<th colspan="6"  height="40"><input type="submit" value="Tranfer"></th>
 					</tr>
 				</table>
 			</div>

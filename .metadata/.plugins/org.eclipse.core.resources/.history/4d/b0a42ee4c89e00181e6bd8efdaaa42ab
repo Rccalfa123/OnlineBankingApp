@@ -1,0 +1,7 @@
+<%@taglib prefix="jstl" uri="http://java.sun.com/jsp/jstl/core" %>
+<div align="center">
+ <table>
+ <tr> <th><h1>Alfa Alfa Bank</h1> </th>       
+    <th align="right"><h3> <a href="home.jsp">                                             &nbspHome</a> </h3></th><tr>
+</table>
+</div>

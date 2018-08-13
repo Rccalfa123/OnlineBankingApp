@@ -26,7 +26,7 @@
 				</tr>
 				
 				<tr>
-					<th height="40" colspan="3" ><a href = "viewAllCustomers.jsp"> View All Customers</a></th>
+					<th height="40" colspan="3" ><a href = "viewAllAccount.app"> View All Customers</a></th>
 					<th height="40" colspan="3"><a href = "depositForm.jsp"> Deposit into a Account</a></th>
 				</tr>
 				

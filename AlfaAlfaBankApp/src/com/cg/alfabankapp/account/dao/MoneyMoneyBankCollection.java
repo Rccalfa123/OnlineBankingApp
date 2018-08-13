@@ -46,37 +46,51 @@ public class MoneyMoneyBankCollection extends BankAccountCollection {
 
 	// It uses the withdraw() method of the BankAccount and performs the withdrawal
 	// action on a given account.
-	public void withdrawAmount(int accountToDeductedFrom, double amount) {
+	public Double withdrawAmount(int accountToDeductedFrom, double amount) {
 		for (BankAccount b : viewAll()) {
 
 			if ((b.getAccountNumber() == accountToDeductedFrom)) {
 				b.withdraw(amount);
+				return amount;
 			}
 		}
+		return 0.0;	
 	}
 
 	// It uses the deposit() method of the BankAccount and performs the deposit
 	// action on a given account.
-	public void depositAmount(int accountToBeDepositedIn, double amount) {
+	public Double depositAmount(int accountToBeDepositedIn, double amount) {
 		for (BankAccount b : viewAll()) {
 			if ((b.getAccountNumber() == accountToBeDepositedIn)) {
 				b.deposit(amount);
+				return amount;
 			}
 		}
-
+		return 0.0;
 	}
 
-	public void performFundTransfer(int receipientAccountNumber, int donerAccountNumber, double amountToBeTransffered) {
+	public Double performFundTransfer(int receipientAccountNumber, int donerAccountNumber, double amountToBeTransffered) {
 		
 		for(BankAccount receiver : viewAll() ) {
 			if(receiver.getAccountNumber() == receipientAccountNumber) {
 				for(BankAccount sender : viewAll() ) {
 					if(sender.getAccountNumber() == donerAccountNumber) {
 						receiver.deposit(sender.withdraw(amountToBeTransffered));
+						return amountToBeTransffered;
 					}
 				}
 			}
 		}
+		return 0.0;
+	}
+
+	public List<BankAccount> getBankAccounts() {
+		
+		List<BankAccount> listOfAccounts = new ArrayList<BankAccount>();
+		for (BankAccount s : viewAll()) {
+			listOfAccounts.add(s);
+		}
+		return listOfAccounts;
 	}
 
 }
